@@ -28,10 +28,11 @@ class App extends Component {
     }
     // initial SharedPen
     this.sharedPen = new window.SharedPen(this.textarea, url)
-    this.sharedPen.on('ready', this._onReady.bind(this))
+    this.sharedPen.on('ready', this._onReady.bind(this))  //为sharepen的ready事件绑定onready函数，实际触发是在shaerpen.js里socket的doc事件里面
     // just for debug
     window.sharedPen = this.sharedPen
   }
+  //ready回调函数是为sharepen的其他三个事件绑定回调函数
   _onReady() {
     this.sharedPen.on('clientsChanged', (clients) => {
       this.setState({clients})
