@@ -13,7 +13,7 @@ class App extends Component {
       clients: [],
       // text attrs
       attrs: {},
-      // undo/redo states
+      // undo/redo states用于撤销操作，依靠这个属性是否存在判断按钮是否可点击
       undoStates: {
         canUndo: false,
         canRedo: false
@@ -91,6 +91,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
+        {/*这里把state都传递给了Toolbox*/}
         <Toolbox {...this.state} onExecCommand={(c, v) => this.onExecCommand(c, v)}/>
         <Editor textareaRef={el => this.textarea = el} />
 
